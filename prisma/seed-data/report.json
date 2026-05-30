@@ -1,0 +1,819 @@
+{
+  "mobile": [
+    {
+      "company_name": "Binance",
+      "job_role": "Senior Android Engineer, Futures",
+      "posted_date": "2026-05-28",
+      "url": "https://www.linkedin.com/jobs/view/4379158910",
+      "status": "Failed at 08-attachment"
+    },
+    {
+      "company_name": "Sol (Spring of Life)",
+      "job_role": "Full-Stack Engineer (Mobile + AI), Founding Product Engineer",
+      "posted_date": "2026-05-28",
+      "url": "https://www.linkedin.com/jobs/view/4418857918",
+      "status": "Failed at 08-attachment"
+    },
+    {
+      "company_name": "Airwallex",
+      "job_role": "Staff Mobile Engineer, Spend Foundation",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4410100422",
+      "status": "Success"
+    },
+    {
+      "company_name": "Binance",
+      "job_role": "Senior Android Architect (Performance Optimization/AI)",
+      "posted_date": "2026-05-29",
+      "url": "https://www.linkedin.com/jobs/view/4323141717",
+      "status": "Success"
+    },
+    {
+      "company_name": "Binance",
+      "job_role": "Senior iOS Engineer, Futures",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4379179003",
+      "status": "Success"
+    },
+    {
+      "company_name": "foodpanda",
+      "job_role": "Android Engineer II",
+      "posted_date": "2026-05-28",
+      "url": "https://www.linkedin.com/jobs/view/4408808653",
+      "status": "Success"
+    },
+    {
+      "company_name": "Grab",
+      "job_role": "Lead Software Engineer, Mobile (Android)",
+      "posted_date": "2026-05-27",
+      "url": "https://www.linkedin.com/jobs/view/4419161406",
+      "status": "Success"
+    },
+    {
+      "company_name": "OKX",
+      "job_role": "Senior/Staff Android Developer",
+      "posted_date": "2026-05-28",
+      "url": "https://www.linkedin.com/jobs/view/3989320662",
+      "status": "Success"
+    },
+    {
+      "company_name": "Plaud",
+      "job_role": "Mobile Engineer - Singapore",
+      "posted_date": "2026-05-27",
+      "url": "https://www.linkedin.com/jobs/view/4377371990",
+      "status": "Success"
+    },
+    {
+      "company_name": "Plaud",
+      "job_role": "Senior Mobile Engineer - Singapore",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4379627926",
+      "status": "Success"
+    },
+    {
+      "company_name": "Rapsodo",
+      "job_role": "Senior Software Developer (Android)",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4420927323",
+      "status": "Success"
+    },
+    {
+      "company_name": "SHIELD",
+      "job_role": "Mobile Engineer (iOS)",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4401191739",
+      "status": "Success"
+    },
+    {
+      "company_name": "Sony Electronics Singapore",
+      "job_role": "AI Engineer (Mobile Platform)",
+      "posted_date": "2026-05-29",
+      "url": "https://www.linkedin.com/jobs/view/4391856174",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "iOS/Android Software Engineer Intern (Global Live Revenue) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4275964440",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "iOS Software Engineer Graduate (Social) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/view/4273232098",
+      "status": "Success"
+    },
+    {
+      "company_name": "Vanguard Software",
+      "job_role": "Expert Frontend Engineer (React.JS & React Native)",
+      "posted_date": "2026-05-29",
+      "url": "https://www.linkedin.com/jobs/view/4410883712",
+      "status": "Success"
+    },
+    {
+      "company_name": "VisionPower Semiconductor Manufacturing Company (VSMC)",
+      "job_role": "IT Application Engineer - Android",
+      "posted_date": "2026-05-28",
+      "url": "https://www.linkedin.com/jobs/view/4410961159",
+      "status": "Success"
+    }
+  ],
+  "devops": [
+    {
+      "company_name": "Eames Consulting",
+      "job_role": "Senior DevOps Engineer (Network Infrastructure)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devops-engineer-network-infrastructure-at-eames-consulting-4420931217",
+      "status": "Failed at 05-ready-format"
+    },
+    {
+      "company_name": "Antaes Asia",
+      "job_role": "DevOps Expert",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-expert-at-antaes-asia-4329560589",
+      "status": "Success"
+    },
+    {
+      "company_name": "AZQORE SA",
+      "job_role": "DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-engineer-at-azqore-sa-4377927037",
+      "status": "Success"
+    },
+    {
+      "company_name": "AZQORE SA",
+      "job_role": "Senior Engineer (CI/CD)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-engineer-ci-cd-at-azqore-sa-4390496824",
+      "status": "Success"
+    },
+    {
+      "company_name": "Binance",
+      "job_role": "Senior DevSecOps Engineer (Security, AI)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devsecops-engineer-security-ai-at-binance-4325143189",
+      "status": "Success"
+    },
+    {
+      "company_name": "Capgemini",
+      "job_role": "Platform Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/platform-engineer-at-capgemini-4319206915",
+      "status": "Success"
+    },
+    {
+      "company_name": "CLPS Global",
+      "job_role": "DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-engineer-at-clps-global-4420916804",
+      "status": "Success"
+    },
+    {
+      "company_name": "Crypto.com",
+      "job_role": "Senior DevOps Engineer (Exchange /Trading Platforms), Singapore",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devops-engineer-exchange-trading-platforms-singapore-at-crypto-com-4417627533",
+      "status": "Success"
+    },
+    {
+      "company_name": "GovTech Singapore",
+      "job_role": "Staff Platform Infrastructure Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/staff-platform-infrastructure-engineer-at-govtech-singapore-4411043232",
+      "status": "Success"
+    },
+    {
+      "company_name": "Illumina",
+      "job_role": "Staff DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/staff-devops-engineer-at-illumina-4389934622",
+      "status": "Success"
+    },
+    {
+      "company_name": "nSearch Global",
+      "job_role": "Senior DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devops-engineer-at-nsearch-global-4419028720",
+      "status": "Success"
+    },
+    {
+      "company_name": "NTT DATA, Inc.",
+      "job_role": "DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-engineer-at-ntt-data-inc-4409293073",
+      "status": "Success"
+    },
+    {
+      "company_name": "PhysicsX",
+      "job_role": "DevOps Consultant",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-consultant-at-physicsx-4411614585",
+      "status": "Success"
+    },
+    {
+      "company_name": "Sedha Consulting",
+      "job_role": "DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-engineer-at-sedha-consulting-4418883820",
+      "status": "Success"
+    },
+    {
+      "company_name": "Space Executive",
+      "job_role": "Senior DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devops-engineer-at-space-executive-4420592830",
+      "status": "Success"
+    },
+    {
+      "company_name": "Space Executive",
+      "job_role": "Software Engineer/DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-devops-engineer-at-space-executive-4420560167",
+      "status": "Success"
+    },
+    {
+      "company_name": "TG Singapore",
+      "job_role": "Day 2 Infrastructure Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/day-2-infrastructure-engineer-upto-%246-500-singaporean-only-at-tg-singapore-4419017803",
+      "status": "Success"
+    },
+    {
+      "company_name": "Thales",
+      "job_role": "DevOps Engineer (IFE DCC)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/devops-engineer-ife-dcc-at-thales-4420694050",
+      "status": "Success"
+    },
+    {
+      "company_name": "Vanguard Software",
+      "job_role": "Senior DevOps Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-devops-engineer-at-vanguard-software-4408961856",
+      "status": "Success"
+    },
+    {
+      "company_name": "Workato",
+      "job_role": "Senior Infrastructure Engineer (AI Lab)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-infrastructure-engineer-ai-lab-at-workato-4370962008",
+      "status": "Success"
+    }
+  ],
+  "sre": [
+    {
+      "company_name": "OCBC",
+      "job_role": "Site Reliability (Network) Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-network-engineer-at-ocbc-4390350022",
+      "status": "Failed at 04-risk-control"
+    },
+    {
+      "company_name": "Ambition",
+      "job_role": "Site Reliability Engineer",
+      "posted_date": "2026-05-27",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-at-ambition-4415293159",
+      "status": "Failed at 08-attachment"
+    },
+    {
+      "company_name": "Apple",
+      "job_role": "Senior Site Reliability Engineer - Apple Information Security",
+      "posted_date": "2026-05-28",
+      "url": "https://sg.indeed.com/viewjob?jk=65a75fe30dcf3f9e",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Backend Software Engineer (SRE) - Cloud Infrastructure",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-sre-cloud-infrastructure-at-bytedance-4422024989",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Site Reliability Engineer - Game",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-game-at-bytedance-4422034771",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Site Reliability Engineer Graduate (Video Infrastructure) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-graduate-video-infrastructure-2026-start-bs-ms-at-bytedance-4287420185",
+      "status": "Success"
+    },
+    {
+      "company_name": "Cboe Global Markets",
+      "job_role": "Senior Site Reliability Engineer",
+      "posted_date": "2026-05-28",
+      "url": "https://sg.linkedin.com/jobs/view/senior-site-reliability-engineer-at-cboe-global-markets-4410952418",
+      "status": "Success"
+    },
+    {
+      "company_name": "Cboe Global Markets",
+      "job_role": "Site Reliability Engineer",
+      "posted_date": "2026-05-28",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-at-cboe-global-markets-4410944398",
+      "status": "Success"
+    },
+    {
+      "company_name": "DBS Bank",
+      "job_role": "SVP, Team Lead, SRE Engineer (Observability Platforms)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.indeed.com/viewjob?jk=d1de954053eb4e1a",
+      "status": "Success"
+    },
+    {
+      "company_name": "GIC",
+      "job_role": "VP, SRE Engineer (Splunk), Technology Group",
+      "posted_date": "2026-05-27",
+      "url": "https://sg.linkedin.com/jobs/view/vp-sre-engineer-splunk-technology-group-at-gic-4399391938",
+      "status": "Success"
+    },
+    {
+      "company_name": "HTX (Home Team Science & Technology Agency)",
+      "job_role": "Lead Engineer/ Engineer, MLOps / SRE (Developer Experience), xCloud",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/lead-engineer-engineer-mlops-sre-developer-experience-xcloud-at-htx-home-team-science-technology-agency-4417905866",
+      "status": "Success"
+    },
+    {
+      "company_name": "JPMorganChase",
+      "job_role": "Director of DevOps / SRE \u2013 Equities Trading",
+      "posted_date": "2026-05-27",
+      "url": "https://sg.linkedin.com/jobs/view/director-of-devops-sre-equities-trading-at-jpmorganchase-4419443145",
+      "status": "Success"
+    },
+    {
+      "company_name": "JPMorganChase",
+      "job_role": "Site Reliability Engineer III",
+      "posted_date": "2026-05-28",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-iii-at-jpmorganchase-4378773965",
+      "status": "Success"
+    },
+    {
+      "company_name": "LSEG",
+      "job_role": "Site Reliability Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-at-lseg-4409264774",
+      "status": "Success"
+    },
+    {
+      "company_name": "Plaud",
+      "job_role": "Site Reliability Engineer - Singapore",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-singapore-at-plaud-4354133631",
+      "status": "Success"
+    },
+    {
+      "company_name": "Rakuten Viki",
+      "job_role": "Senior Engineer, SRE",
+      "posted_date": "2026-05-27",
+      "url": "https://sg.linkedin.com/jobs/view/senior-engineer-sre-at-rakuten-viki-4401595800",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Site Reliability Engineer, Monetization Technology",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/site-reliability-engineer-monetization-technology-at-tiktok-4420849812",
+      "status": "Success"
+    },
+    {
+      "company_name": "Trulyyy",
+      "job_role": "Senior Site Reliability Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-site-reliability-engineer-at-trulyyy-4419057875",
+      "status": "Success"
+    },
+    {
+      "company_name": "Vanguard Software",
+      "job_role": "Senior Site Reliability Engineer (SRE)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-site-reliability-engineer-sre-at-vanguard-software-4357685208",
+      "status": "Success"
+    }
+  ],
+  "software_engineer": [
+    {
+      "company_name": "ByteDance",
+      "job_role": "Backend Software Engineer (SRE) - Cloud Infrastructure",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-sre-cloud-infrastructure-at-bytedance-4422024989",
+      "status": "Failed at 02-god-cv"
+    },
+    {
+      "company_name": "Evernote",
+      "job_role": "Graduate software engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/graduate-software-engineer-at-evernote-4420560738",
+      "status": "Failed at 04-risk-control"
+    },
+    {
+      "company_name": "WeTransfer",
+      "job_role": "Graduate software engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/graduate-software-engineer-at-wetransfer-4420581404",
+      "status": "Failed at 04-risk-control"
+    },
+    {
+      "company_name": "AR Soluciones Integrales",
+      "job_role": "Software Engineer / Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-developer-at-ar-soluciones-integrales-4422060898",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Software Engineer Graduate (Analytical Database) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-graduate-analytical-database-2026-start-bs-ms-at-bytedance-4287415820",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Software Engineer (Payment Network) - Global Payment - Singapore",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-payment-network-global-payment-singapore-at-bytedance-4422043187",
+      "status": "Success"
+    },
+    {
+      "company_name": "Citadel Securities",
+      "job_role": "C++ Software Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/c%2B%2B-software-engineer-at-citadel-securities-4281726042",
+      "status": "Success"
+    },
+    {
+      "company_name": "Deutsche Bank",
+      "job_role": "TDI - Software Engineer - Associate",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/tdi-software-engineer-associate-at-deutsche-bank-4390876712",
+      "status": "Success"
+    },
+    {
+      "company_name": "Google",
+      "job_role": "Software Engineer, Payments Data Platform",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-payments-data-platform-at-google-4389584804",
+      "status": "Success"
+    },
+    {
+      "company_name": "GovTech Singapore",
+      "job_role": "Senior Software Engineer, GeBIZ X",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-software-engineer-gebiz-x-at-govtech-singapore-4419788477",
+      "status": "Success"
+    },
+    {
+      "company_name": "GovTech Singapore",
+      "job_role": "Software Engineer, Digital Society Products (DSP)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-digital-society-products-dsp-at-govtech-singapore-4310830905",
+      "status": "Success"
+    },
+    {
+      "company_name": "Hunter Bond",
+      "job_role": "Software Engineer - Up to 270,000 SGD base + Bonus + Benefits",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-up-to-270-000-sgd-base-%2B-bonus-%2B-benefits-at-hunter-bond-4417952667",
+      "status": "Success"
+    },
+    {
+      "company_name": "Mastercard",
+      "job_role": "Software Engineer (Full Stack)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-full-stack-at-mastercard-4411866922",
+      "status": "Success"
+    },
+    {
+      "company_name": "Meetup",
+      "job_role": "Graduate software engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/graduate-software-engineer-at-meetup-4420563636",
+      "status": "Success"
+    },
+    {
+      "company_name": "Micron Technology",
+      "job_role": "Firmware Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://www.linkedin.com/jobs/search?keywords=Firmware%20Engineer&location=Singapore&geoId=102454443&f_TPR=r604800",
+      "status": "Success"
+    },
+    {
+      "company_name": "Sanderson-iKas Singapore",
+      "job_role": "Lead Software Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/lead-software-engineer-at-sanderson-ikas-singapore-4416077155",
+      "status": "Success"
+    },
+    {
+      "company_name": "SCIENTE",
+      "job_role": "Java Software Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/java-software-engineer-at-sciente-4418218825",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Backend Software Engineer Graduate (Global LIVE Revenue) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-graduate-global-live-revenue-2026-start-bs-ms-at-tiktok-4274319671",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Software Engineer Graduate (Data Speech) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-graduate-data-speech-2026-start-bs-ms-at-tiktok-4329690802",
+      "status": "Success"
+    },
+    {
+      "company_name": "Webot Singapore",
+      "job_role": "AI Software Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/ai-software-engineer-at-webot-singapore-4410291459",
+      "status": "Success"
+    }
+  ],
+  "full_stack": [
+    {
+      "company_name": "Winmark Investments Pte Ltd",
+      "job_role": "Full Stack Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-engineer-4419380133",
+      "status": "Failed at 03-match-cv"
+    },
+    {
+      "company_name": "Peak XV Partners",
+      "job_role": "Senior Full-Stack Engineer | Early-Stage Physical AI Portfolio Company",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-full-stack-engineer-early-stage-physical-ai-portfolio-company-at-peak-xv-partners-4419048709",
+      "status": "Failed at 05-ready-format"
+    },
+    {
+      "company_name": "Ad Astra Consultants",
+      "job_role": "Full Stack Developer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-developer-at-ad-astra-consultants-4417603924",
+      "status": "Success"
+    },
+    {
+      "company_name": "Ambition",
+      "job_role": "Full Stack Engineer (Python/ React)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-engineer-python-react-at-ambition-4417917353",
+      "status": "Success"
+    },
+    {
+      "company_name": "Antalpha",
+      "job_role": "AI Full-Stack Intern",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/ai-full-stack-intern-at-antalpha-4417631351",
+      "status": "Success"
+    },
+    {
+      "company_name": "Broadvoice",
+      "job_role": "Full-stack Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-engineer-at-broadvoice-4417699032",
+      "status": "Success"
+    },
+    {
+      "company_name": "CLPS Global",
+      "job_role": "Full Stack Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-developer-at-clps-global-4419366438",
+      "status": "Success"
+    },
+    {
+      "company_name": "Cr\u00e9dit Agricole CIB",
+      "job_role": "CSI Junior Java Full Stack Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/csi-junior-java-full-stack-developer-at-cr%C3%A9dit-agricole-cib-4420907010",
+      "status": "Success"
+    },
+    {
+      "company_name": "Digify",
+      "job_role": "Full Stack Software Engineer (202606)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-software-engineer-202606-at-digify-4420251171",
+      "status": "Success"
+    },
+    {
+      "company_name": "eAspire Technolabs Inc.",
+      "job_role": "Full Stack Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-engineer-at-easpire-technolabs-inc-4420480368",
+      "status": "Success"
+    },
+    {
+      "company_name": "Epergne Solutions",
+      "job_role": "Onshore IT Software Developer/Full stack Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/onshore-it-software-developer-full-stack-developer-at-epergne-solutions-4420688528",
+      "status": "Success"
+    },
+    {
+      "company_name": "ExxonMobil",
+      "job_role": "Trading Desk Full Stack Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/trading-desk-full-stack-developer-at-exxonmobil-4420987332",
+      "status": "Success"
+    },
+    {
+      "company_name": "Knovel Engineering",
+      "job_role": "Full Stack Software Engineer Intern",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-software-engineer-intern-at-knovel-engineering-4421081558",
+      "status": "Success"
+    },
+    {
+      "company_name": "Mastercard",
+      "job_role": "Software Engineer (Full Stack)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-full-stack-at-mastercard-4411866922",
+      "status": "Success"
+    },
+    {
+      "company_name": "MSD",
+      "job_role": "Senior Software Engineer (Full Stack)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-software-engineer-full-stack-at-msd-4370544392",
+      "status": "Success"
+    },
+    {
+      "company_name": "Newtone consulting",
+      "job_role": "Software engineer Nodejs React",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-nodejs-react-at-newtone-consulting-4420336616",
+      "status": "Success"
+    },
+    {
+      "company_name": "Quess Singapore",
+      "job_role": "Senior Full Stack Engineer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-full-stack-engineer-at-quess-singapore-4420819312",
+      "status": "Success"
+    },
+    {
+      "company_name": "SAP",
+      "job_role": "Associate AI Developer/ AI Developer (Full stack) - Artificial Intelligence, SAP Labs Singapore",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/associate-ai-developer-ai-developer-full-stack-artificial-intelligence-sap-labs-singapore-at-sap-4421702433",
+      "status": "Success"
+    },
+    {
+      "company_name": "Stripe",
+      "job_role": "Full Stack Engineer, Growth",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/full-stack-engineer-growth-at-stripe-4420972054",
+      "status": "Success"
+    },
+    {
+      "company_name": "UST",
+      "job_role": "Dotnet Full stack Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/dotnet-full-stack-developer-at-ust-4379385295",
+      "status": "Success"
+    }
+  ],
+  "backend": [
+    {
+      "company_name": "Binance",
+      "job_role": "Backend Engineer (recommendation) - AI/LLM",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/backend-engineer-recommendation-ai-llm-at-binance-4299355063",
+      "status": "Failed at 08-attachment"
+    },
+    {
+      "company_name": "Binance",
+      "job_role": "Backend Engineer (Java) - KYC Tech",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-engineer-java-kyc-tech-at-binance-4326260035",
+      "status": "Success"
+    },
+    {
+      "company_name": "Binance",
+      "job_role": "Senior Backend Engineer - Java",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/senior-backend-engineer-java-at-binance-4299353130",
+      "status": "Success"
+    },
+    {
+      "company_name": "ByteDance",
+      "job_role": "Backend Software Engineer (SRE) - Cloud Infrastructure",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-sre-cloud-infrastructure-at-bytedance-4422024989",
+      "status": "Success"
+    },
+    {
+      "company_name": "Capgemini",
+      "job_role": "Java Developer",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/java-developer-at-capgemini-4296094786",
+      "status": "Success"
+    },
+    {
+      "company_name": "Capgemini",
+      "job_role": "Seniopr Backend Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/seniopr-backend-engineer-at-capgemini-4420473101",
+      "status": "Success"
+    },
+    {
+      "company_name": "EPAM Systems",
+      "job_role": "Software Engineer (Java / Python)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/software-engineer-java-python-at-epam-systems-4408827525",
+      "status": "Success"
+    },
+    {
+      "company_name": "FPT Asia Pacific",
+      "job_role": "Back End Developer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/back-end-developer-at-fpt-asia-pacific-4419376522",
+      "status": "Success"
+    },
+    {
+      "company_name": "HyperLink",
+      "job_role": "Backend Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-engineer-at-hyperlink-4420007974",
+      "status": "Success"
+    },
+    {
+      "company_name": "Kris Infotech",
+      "job_role": "Software Developer (Node.js, Spring Boot / Java)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/software-developer-node-js-spring-boot-java-at-kris-infotech-technology-talent-synced-4419004526",
+      "status": "Success"
+    },
+    {
+      "company_name": "NEXadept",
+      "job_role": "Back End Developer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/back-end-developer-at-nexadept-4415496810",
+      "status": "Success"
+    },
+    {
+      "company_name": "Ola Chat",
+      "job_role": "Ola Trainee - Back-End Engineer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/ola-trainee-back-end-engineer-at-ola-chat-4380223617",
+      "status": "Success"
+    },
+    {
+      "company_name": "SCIENTE",
+      "job_role": ".NET / Node.js Developer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/net-node-js-developer-at-sciente-4421700079",
+      "status": "Success"
+    },
+    {
+      "company_name": "Shopee",
+      "job_role": "Backend Engineer - Marketplace, Promotion",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-engineer-marketplace-promotion-at-shopee-4300227231",
+      "status": "Success"
+    },
+    {
+      "company_name": "Shopee",
+      "job_role": "Senior Backend Engineer (Java)",
+      "posted_date": "2026-05-30",
+      "url": "https://sg.linkedin.com/jobs/view/senior-backend-engineer-java-at-shopee-4329568922",
+      "status": "Success"
+    },
+    {
+      "company_name": "Tech Mahindra",
+      "job_role": "Java Backend Developer",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/java-backend-developer-at-tech-mahindra-4419021449",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Backend Software Engineer Graduate (Global LIVE Money Platform) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-graduate-global-live-money-platform-2026-start-bs-ms-at-tiktok-4274320661",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Backend Software Engineer Graduate (Global LIVE Revenue) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-graduate-global-live-revenue-2026-start-bs-ms-at-tiktok-4274319671",
+      "status": "Success"
+    },
+    {
+      "company_name": "TikTok",
+      "job_role": "Backend Software Engineer Graduate (Video-On-Demand) - 2026 Start (BS/MS)",
+      "posted_date": "2026-05-29",
+      "url": "https://sg.linkedin.com/jobs/view/backend-software-engineer-graduate-video-on-demand-2026-start-bs-ms-at-tiktok-4273227615",
+      "status": "Success"
+    }
+  ]
+}
