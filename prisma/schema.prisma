@@ -18,19 +18,30 @@ model JobRole {
 }
 
 model Job {
-  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  jobRoleId   String    @map("job_role_id") @db.Uuid
-  companyName String    @map("company_name")
-  jobRoleName String    @map("job_role")
-  postedDate  DateTime? @map("posted_date") @db.Date
-  url         String    @unique
-  cv          String?
-  status      String
-  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
-  role        JobRole   @relation(fields: [jobRoleId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id             String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  jobRoleId      String     @map("job_role_id") @db.Uuid
+  companyName    String     @map("company_name")
+  jobRoleName    String     @map("job_role")
+  postedDate     DateTime?  @map("posted_date") @db.Date
+  url            String     @unique
+  cv             String?
+  pipelineStatus String     @map("pipeline_status")
+  jobsStatus     JobsStatus @default(PendingApply) @map("jobs_status")
+  createdAt      DateTime?  @default(now()) @map("created_at") @db.Timestamptz(6)
+  role           JobRole    @relation(fields: [jobRoleId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@index([companyName], map: "idx_jobs_company")
   @@index([jobRoleId], map: "idx_jobs_role")
-  @@index([status], map: "idx_jobs_status")
+  @@index([pipelineStatus], map: "idx_jobs_pipeline_status")
+  @@index([jobsStatus], map: "idx_jobs_jobs_status")
   @@map("jobs")
+}
+
+enum JobsStatus {
+  PendingApply @map("Pending Apply")
+  Applied     @map("Applied")
+  InProgress  @map("In Progress")
+  Rejected    @map("Rejected")
+
+  @@map("jobs_status")
 }

@@ -2,10 +2,11 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import type { Job, JobRole } from "@/app/generated/prisma/client";
+import { JobsStatusCell } from "./jobs-status-cell";
 
 export type JobWithRole = Job & { role: JobRole };
 
-function StatusPill({ status }: { status: string }) {
+function PipelineStatusPill({ status }: { status: string }) {
   const tone = status.toLowerCase().startsWith("success")
     ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300"
     : status.toLowerCase().startsWith("failed")
@@ -51,9 +52,16 @@ export const columns: ColumnDef<JobWithRole>[] = [
         : "—",
   },
   {
-    accessorKey: "status",
+    accessorKey: "pipelineStatus",
+    header: "Pipeline",
+    cell: ({ row }) => <PipelineStatusPill status={row.original.pipelineStatus} />,
+  },
+  {
+    accessorKey: "jobsStatus",
     header: "Status",
-    cell: ({ row }) => <StatusPill status={row.original.status} />,
+    cell: ({ row }) => (
+      <JobsStatusCell id={row.original.id} value={row.original.jobsStatus} />
+    ),
   },
   {
     id: "cv",

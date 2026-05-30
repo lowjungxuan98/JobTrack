@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import {
+  JOBS_STATUS_LABELS,
+  JOBS_STATUS_VALUES,
+} from "@/app/(main)/jobs/jobs-status";
 
 export const dynamic = "force-dynamic";
 
@@ -7,15 +11,19 @@ export default async function DashboardPage() {
   const [total, statusGroups, roles] = await Promise.all([
     prisma.job.count(),
     prisma.job.groupBy({
-      by: ["status"],
-      _count: { status: true },
-      orderBy: { _count: { status: "desc" } },
+      by: ["jobsStatus"],
+      _count: { jobsStatus: true },
+      orderBy: { _count: { jobsStatus: "desc" } },
     }),
     prisma.jobRole.findMany({
       orderBy: { name: "asc" },
       include: { _count: { select: { jobs: true } } },
     }),
   ]);
+
+  const counts = Object.fromEntries(
+    statusGroups.map((g) => [g.jobsStatus, g._count.jobsStatus]),
+  );
 
   return (
     <main className="min-h-screen bg-zinc-50 dark:bg-black p-8">
@@ -32,8 +40,12 @@ export default async function DashboardPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
           <StatCard label="Total Applications" value={total} />
-          {statusGroups.map((g) => (
-            <StatCard key={g.status} label={g.status} value={g._count.status} />
+          {JOBS_STATUS_VALUES.map((s) => (
+            <StatCard
+              key={s}
+              label={JOBS_STATUS_LABELS[s]}
+              value={counts[s] ?? 0}
+            />
           ))}
         </div>
 

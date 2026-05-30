@@ -37,7 +37,7 @@ async function main() {
           companyName: r.company_name,
           jobRoleName: r.job_role,
           postedDate: r.posted_date ? new Date(r.posted_date) : null,
-          status: r.status,
+          pipelineStatus: r.status,
           jobRoleId: role.id,
         },
         create: {
@@ -45,7 +45,7 @@ async function main() {
           jobRoleName: r.job_role,
           postedDate: r.posted_date ? new Date(r.posted_date) : null,
           url: r.url,
-          status: r.status,
+          pipelineStatus: r.status,
           jobRoleId: role.id,
         },
       });
