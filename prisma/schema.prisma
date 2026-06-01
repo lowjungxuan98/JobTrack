@@ -37,6 +37,40 @@ model Job {
   @@map("jobs")
 }
 
+model PipelineRun {
+  id           String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  kind         String
+  status       String
+  totalRows    Int?            @map("total_rows")
+  totalBatches Int?            @map("total_batches")
+  currentBatch Int?            @map("current_batch")
+  startedAt    DateTime?       @default(now()) @map("started_at") @db.Timestamptz(6)
+  finishedAt   DateTime?       @map("finished_at") @db.Timestamptz(6)
+  error        String?
+  batches      PipelineBatch[]
+
+  @@index([startedAt], map: "idx_pipeline_runs_started_at")
+  @@map("pipeline_runs")
+}
+
+model PipelineBatch {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  runId        String      @map("run_id") @db.Uuid
+  batchIndex   Int         @map("batch_index")
+  rowStart     Int         @map("row_start")
+  rowEnd       Int         @map("row_end")
+  status       String
+  currentStage String?     @map("current_stage")
+  startedAt    DateTime?   @default(now()) @map("started_at") @db.Timestamptz(6)
+  finishedAt   DateTime?   @map("finished_at") @db.Timestamptz(6)
+  error        String?
+  run          PipelineRun @relation(fields: [runId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([runId, batchIndex])
+  @@index([runId], map: "idx_pipeline_batches_run")
+  @@map("pipeline_batches")
+}
+
 enum JobsStatus {
   PendingApply @map("Pending Apply")
   Applied     @map("Applied")

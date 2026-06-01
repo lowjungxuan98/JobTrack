@@ -11,7 +11,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,10 +28,13 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
+const COMPANY_FILTER_STORAGE_KEY = "jobs.companyFilter";
+
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const restoredCompanyFilter = useRef(false);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -39,6 +42,7 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     initialState: { pagination: { pageSize: 10 } },
+    autoResetPageIndex: false,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -48,12 +52,34 @@ export function DataTable<TData, TValue>({
     state: { sorting, columnFilters },
   });
 
+  useEffect(() => {
+    if (restoredCompanyFilter.current) {
+      return;
+    }
+    restoredCompanyFilter.current = true;
+
+    const companyFilter = window.sessionStorage.getItem(COMPANY_FILTER_STORAGE_KEY);
+    if (companyFilter) {
+      table.getColumn("companyName")?.setFilterValue(companyFilter);
+    }
+  }, [table]);
+
+  function updateCompanyFilter(value: string) {
+    table.getColumn("companyName")?.setFilterValue(value);
+
+    if (value) {
+      window.sessionStorage.setItem(COMPANY_FILTER_STORAGE_KEY, value);
+    } else {
+      window.sessionStorage.removeItem(COMPANY_FILTER_STORAGE_KEY);
+    }
+  }
+
   return (
     <div className="space-y-3">
       <Input
         placeholder="Filter by company..."
         value={(table.getColumn("companyName")?.getFilterValue() as string) ?? ""}
-        onChange={(e) => table.getColumn("companyName")?.setFilterValue(e.target.value)}
+        onChange={(e) => updateCompanyFilter(e.target.value)}
         className="max-w-xs"
       />
 

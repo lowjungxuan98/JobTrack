@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDownIcon } from "lucide-react";
+import { ActivityIcon, BookOpenIcon, BriefcaseBusinessIcon, ChevronDownIcon, LayoutDashboardIcon } from "lucide-react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import {
   Sidebar,
@@ -33,7 +33,26 @@ export function AppSidebar({ roles }: { roles: Role[] }) {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/"}>
-                  <Link href="/">Dashboard</Link>
+                  <Link href="/">
+                    <LayoutDashboardIcon />
+                    Dashboard
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/jobops"}>
+                  <Link href="/jobops">
+                    <ActivityIcon />
+                    JobOps
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/reference"}>
+                  <Link href="/reference">
+                    <BookOpenIcon />
+                    API Reference
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -53,8 +72,11 @@ export function AppSidebar({ roles }: { roles: Role[] }) {
               <SidebarGroupContent>
                 <SidebarMenu>
                   <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/jobs">All Jobs</Link>
+                    <SidebarMenuButton asChild isActive={pathname === "/jobs"}>
+                      <Link href="/jobs">
+                        <BriefcaseBusinessIcon />
+                        All Jobs
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   {roles.map((role) => (

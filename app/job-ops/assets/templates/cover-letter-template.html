@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NAME}} - Cover Letter</title>
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk-latin.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/dm-sans-latin.woff2') format('woff2');
+    font-weight: 100 1000;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    color: #1a1a2e;
+    background: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.62;
+  }
+
+  .page {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2px 0;
+  }
+
+  .page-a4 {
+    max-width: 210mm;
+  }
+
+  .page-letter {
+    max-width: 8.5in;
+  }
+
+  .header {
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    margin: 0 0 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 27px;
+    line-height: 1.1;
+  }
+
+  .header-gradient {
+    height: 2px;
+    margin-bottom: 9px;
+    border-radius: 1px;
+    background: linear-gradient(to right, hsl(187, 74%, 32%), hsl(270, 70%, 45%));
+  }
+
+  .contact-row {
+    color: #555;
+    font-size: 10.5px;
+  }
+
+  .meta {
+    margin-bottom: 24px;
+    color: #333;
+  }
+
+  .recipient {
+    margin-bottom: 22px;
+  }
+
+  .role {
+    color: hsl(270, 70%, 45%);
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0 0 13px;
+  }
+
+  .signature {
+    margin-top: 22px;
+  }
+
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page {{PAGE_CLASS}}">
+  <div class="header">
+    <h1>{{NAME}}</h1>
+    <div class="header-gradient"></div>
+    <div class="contact-row">{{CONTACT_ROW}}</div>
+  </div>
+
+  <div class="meta">{{DATE}}</div>
+
+  <div class="recipient">
+    <div>{{RECIPIENT}}</div>
+    <div>{{COMPANY}}</div>
+    <div class="role">{{JOB_TITLE}}</div>
+  </div>
+
+  <p>{{GREETING}}</p>
+  {{PARAGRAPHS}}
+
+  <div class="signature">
+    <p>{{CLOSING}}</p>
+    <p>{{SIGNATURE}}</p>
+  </div>
+</div>
+</body>
+</html>

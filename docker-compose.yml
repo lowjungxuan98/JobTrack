@@ -1,0 +1,62 @@
+services:
+  jobtrack:
+    build: .
+    ports:
+      - "8001:3000"
+    environment:
+      CODEX_HOME: /jobtrack
+      DATABASE_URL: postgresql://jobops:jobops@jobops-db:5432/jobops
+      MINIO_ENDPOINT: jobops-minio
+      MINIO_PORT: "9000"
+      MINIO_USE_SSL: "false"
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      MINIO_BUCKET: jobops-pdfs
+      NODE_ENV: production
+    volumes:
+      # Persist JobTrack/Codex login state (auth.json + refresh tokens).
+      # Named volume — never bind-mount and never COPY auth into the image.
+      - jobtrack:/jobtrack
+      # Workspace where Codex operates on user projects.
+      - ./workspace:/workspace
+    restart: unless-stopped
+
+  # job-ops Postgres.
+  jobops-db:
+    image: postgres:17-alpine
+    container_name: jobops-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: jobops
+      POSTGRES_PASSWORD: jobops
+      POSTGRES_DB: jobops
+    volumes:
+      - jobops_pg:/var/lib/postgresql/data
+      - ./app/job-ops/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jobops -d jobops"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # job-ops MinIO.
+  jobops-minio:
+    image: minio/minio:latest
+    container_name: jobops-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - jobops_minio:/data
+
+volumes:
+  jobtrack:
+  jobops_pg:
+  jobops_minio:

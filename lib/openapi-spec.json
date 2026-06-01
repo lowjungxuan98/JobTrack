@@ -1,0 +1,206 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Job Tracker API",
+    "version": "0.2.0",
+    "description": "Internal API for Job Tracker. Two groups:\n\n- **codex** — wrappers around the Codex CLI (login, logout, status).\n- **jobops** — fire-and-forget triggers for the job-application pipeline.\n\nAll routes use the Node.js runtime and are `force-dynamic` (no caching). The JobOps tracking UI at `/jobops` polls progress via Server Actions rather than public endpoints — those are intentionally not part of this spec."
+  },
+  "servers": [],
+  "tags": [
+    { "name": "codex", "description": "Codex CLI wrapper endpoints" },
+    { "name": "jobops", "description": "JobOps pipeline trigger endpoints" }
+  ],
+  "paths": {
+    "/api/codex/login": {
+      "post": {
+        "tags": ["codex"],
+        "summary": "Start device-auth login",
+        "description": "Spawns `codex login --device-auth` and captures the device URL + code from its output.",
+        "operationId": "codexLogin",
+        "responses": {
+          "200": {
+            "description": "Device code captured",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DeviceAuth" },
+                "example": { "url": "https://chatgpt.com/codex/device", "code": "ABCD-1234", "expiresInSec": 900 }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to capture device code",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        }
+      }
+    },
+    "/api/codex/status": {
+      "get": {
+        "tags": ["codex"],
+        "summary": "Check Codex login state and account summary",
+        "description": "Runs `codex login status` and `codex doctor --json` and returns a combined report. The `usage` object surfaces auth mode, model, and version from doctor; `usage.remaining` is reserved for when codex CLI begins exposing remaining-quota information — today it is always `null`.",
+        "operationId": "codexStatus",
+        "responses": {
+          "200": {
+            "description": "Status reported",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LoginStatus" },
+                "example": {
+                  "loggedIn": true,
+                  "exitCode": 0,
+                  "output": "Logged in using ChatGPT",
+                  "usage": { "mode": "chatgpt", "model": "gpt-5.5", "version": "0.135.0", "remaining": null }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codex/logout": {
+      "post": {
+        "tags": ["codex"],
+        "summary": "Log out Codex session",
+        "description": "Runs `codex logout` and returns the result.",
+        "operationId": "codexLogout",
+        "responses": {
+          "200": {
+            "description": "Logout attempted",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LogoutResult" },
+                "example": { "ok": true, "exitCode": 0, "output": "Logged out" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobops/run": {
+      "post": {
+        "tags": ["jobops"],
+        "summary": "Trigger the full JobOps pipeline (stages 00 → 09)",
+        "description": "Fire-and-forget. Allocates a `pipeline_runs` row, spawns the worker detached, and returns the run id immediately. Watch progress at `/jobops` or by polling `pipeline_runs` / `pipeline_batches` in Postgres.",
+        "operationId": "jobopsRun",
+        "responses": {
+          "200": {
+            "description": "Pipeline started",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RunTriggerResponse" },
+                "example": { "ok": true, "run_id": "1d4f0a2c-9e3a-4f4b-9c0e-2e1a0b8d3a91" }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to spawn worker",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RunTriggerError" },
+                "example": { "ok": false, "run_id": "1d4f0a2c-9e3a-4f4b-9c0e-2e1a0b8d3a91", "error": "spawn ENOENT" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobops/retry": {
+      "post": {
+        "tags": ["jobops"],
+        "summary": "Retry failed jobs (stages 01 → 09)",
+        "description": "Fire-and-forget. Rebuilds `assets/jobs/jobs.xlsx` from Postgres rows whose `pipeline_status` begins with `Failed`, then re-runs stages 01 → 09. Stage 00 (collect) is skipped. If there are no failed rows the run resolves immediately to `success`.",
+        "operationId": "jobopsRetry",
+        "responses": {
+          "200": {
+            "description": "Retry started",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RunTriggerResponse" }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to spawn worker",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RunTriggerError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": { "type": "string", "description": "Human-readable error message" }
+        }
+      },
+      "DeviceAuth": {
+        "type": "object",
+        "required": ["url", "code", "expiresInSec"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "code": { "type": "string" },
+          "expiresInSec": { "type": "integer", "example": 900 }
+        }
+      },
+      "AccountSummary": {
+        "type": "object",
+        "description": "Best-effort account info parsed from `codex doctor --json`.",
+        "properties": {
+          "mode": { "type": ["string", "null"], "description": "Auth mode, e.g. 'chatgpt' or 'api-key'" },
+          "model": { "type": ["string", "null"], "description": "Default model configured" },
+          "version": { "type": ["string", "null"], "description": "Installed codex CLI version" },
+          "remaining": { "type": ["string", "null"], "description": "Remaining quota, when codex CLI begins exposing it" }
+        }
+      },
+      "LoginStatus": {
+        "type": "object",
+        "required": ["loggedIn", "exitCode", "output"],
+        "properties": {
+          "loggedIn": { "type": "boolean" },
+          "exitCode": { "type": "integer" },
+          "output": { "type": "string" },
+          "usage": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/AccountSummary" },
+              { "type": "null" }
+            ]
+          }
+        }
+      },
+      "LogoutResult": {
+        "type": "object",
+        "required": ["ok", "exitCode", "output"],
+        "properties": {
+          "ok": { "type": "boolean" },
+          "exitCode": { "type": "integer" },
+          "output": { "type": "string" }
+        }
+      },
+      "RunTriggerResponse": {
+        "type": "object",
+        "required": ["ok", "run_id"],
+        "properties": {
+          "ok": { "type": "boolean", "enum": [true] },
+          "run_id": { "type": "string", "format": "uuid" }
+        }
+      },
+      "RunTriggerError": {
+        "type": "object",
+        "required": ["ok", "run_id", "error"],
+        "properties": {
+          "ok": { "type": "boolean", "enum": [false] },
+          "run_id": { "type": "string", "format": "uuid" },
+          "error": { "type": "string" }
+        }
+      }
+    }
+  }
+}

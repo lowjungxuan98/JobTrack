@@ -70,8 +70,7 @@ export const columns: ColumnDef<JobWithRole>[] = [
       row.original.cv ? (
         <a
           href={`/api/jobs/${row.original.id}/cv`}
-          target="_blank"
-          rel="noopener noreferrer"
+          download
           className="rounded-md bg-indigo-600 px-3 py-1.5 text-white text-xs font-medium hover:bg-indigo-700"
         >
           CV

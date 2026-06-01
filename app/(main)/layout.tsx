@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
+export const dynamic = "force-dynamic";
+
 export default async function MainLayout({ children }: { children: React.ReactNode }) {
   const roles = await prisma.jobRole.findMany({
     orderBy: { name: "asc" },

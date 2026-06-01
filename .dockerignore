@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Dockerfile
+.dockerignore
+docker-compose.yml
+README.md
+workspace
+app/job-ops/outputs
+app/job-ops/assets/jobs

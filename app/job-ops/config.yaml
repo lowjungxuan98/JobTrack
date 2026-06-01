@@ -1,0 +1,246 @@
+pipeline:
+  batch_size: 10
+codex:
+  bin: codex
+  # Leave empty to use the account's default model. ChatGPT-auth accounts
+  # reject `-m <name>` for unsupported models (e.g. `gpt-5-codex`); set this
+  # only when running with an API-key auth that supports model selection.
+  model: ""
+  timeout: 600
+  retries: 3
+  retry_backoff: 4.0
+collect:
+  target_per_role: 3
+  parallelism: 10
+  eligibility:
+    location:
+    - Worldwide
+    posted_within_days: 1
+    exclude_keywords:
+    - contract
+    - contractor
+    - temporary
+    - temp
+    - freelance
+    - part-time
+    - part time
+    - graduate
+    - new grad
+    - fresh grad
+    - internship
+    - intern
+  platforms:
+    linkedin:
+      base_url: https://www.linkedin.com/jobs/search
+      location_param: location
+      location_value: Worldwide
+      time_filter:
+        param: f_TPR
+        past_24h: r86400
+      keyword_param: keywords
+      pagination_param: start
+      pagination_step: 25
+    indeed:
+      base_url: https://www.indeed.com/jobs
+      location_param: l
+      location_value: ''
+      time_filter:
+        param: fromage
+        past_24h: '1'
+      keyword_param: q
+      pagination_param: start
+      pagination_step: 10
+  roles:
+    mobile:
+      search_terms:
+      - Mobile Engineer
+      - Mobile Developer
+      - Mobile App Developer
+      - Mobile Application Developer
+      - iOS Developer
+      - iOS Engineer
+      - iOS Software Engineer
+      - Android Developer
+      - Android Engineer
+      - Android Software Engineer
+      - Flutter Developer
+      - React Native Developer
+      - Kotlin Android Developer
+      - Swift iOS Developer
+      relevance_keywords:
+      - mobile
+      - iOS
+      - Android
+      - Flutter
+      - React Native
+      - Kotlin Android
+      - Swift iOS
+    devops:
+      search_terms:
+      - DevOps
+      - DevOps Engineer
+      - Senior DevOps Engineer
+      - Cloud DevOps Engineer
+      - AWS DevOps Engineer
+      - Azure DevOps Engineer
+      - GCP DevOps Engineer
+      - GitLab DevOps Engineer
+      - DevSecOps Engineer
+      - Platform Engineer DevOps
+      - Cloud Platform Engineer
+      - Kubernetes Engineer
+      - Terraform Engineer
+      - CI/CD Engineer
+      - Infrastructure Automation Engineer
+      - Cloud Infrastructure Engineer
+      - Build Release Engineer
+      - Release Engineer DevOps
+      - SRE
+      - SRE Engineer
+      - Site Reliability Engineer
+      - Senior Site Reliability Engineer
+      - Service Reliability Engineer
+      - Systems Reliability Engineer
+      - Infrastructure Reliability Engineer
+      - Platform Reliability Engineer
+      - Cloud Reliability Engineer
+      - Production Engineer SRE
+      - Production Engineering SRE
+      - Observability Engineer SRE
+      - DevOps SRE
+      - Reliability Platform Engineer
+      relevance_keywords:
+      - DevOps
+      - DevSecOps
+      - platform engineer
+      - cloud platform
+      - Kubernetes
+      - Terraform
+      - CI/CD
+      - build/release
+      - cloud infrastructure
+      - infrastructure engineer
+      - SRE
+      - site reliability
+      - service reliability
+      - systems reliability
+      - cloud reliability
+      - platform reliability
+      - infrastructure reliability
+      - observability
+      - production engineering
+    software_engineer:
+      search_terms:
+      - Software Engineer
+      - Software Developer
+      - Software Development Engineer
+      - Senior Software Engineer
+      - Lead Software Engineer
+      - Staff Software Engineer
+      - Principal Software Engineer
+      - Junior Software Engineer
+      - Application Developer
+      - Application Software Engineer
+      - Systems Software Engineer
+      - Embedded Software Engineer
+      - Firmware Engineer
+      - Java Developer
+      - Java Engineer
+      - Java Software Engineer
+      - Python Developer
+      - Python Engineer
+      - Python Software Engineer
+      - Golang Developer
+      - Go Developer
+      - Go Software Engineer
+      - C++ Developer
+      - C++ Software Engineer
+      - C# Developer
+      - .NET Developer
+      - JavaScript Developer
+      - TypeScript Developer
+      - Node.js Developer
+      - Kotlin Developer
+      - Scala Developer
+      - Ruby Developer
+      - PHP Developer
+      - Trading Software Engineer
+      - Quantitative Developer
+      relevance_keywords:
+      - software engineer
+      - software developer
+      - software development engineer
+      - application developer
+      - embedded software
+      - firmware
+      - trading software
+      - quantitative developer
+    full_stack:
+      search_terms:
+      - Full Stack
+      - Full Stack Engineer
+      - Full Stack Developer
+      - Full Stack Software Engineer
+      - Full Stack Web Developer
+      - Senior Full Stack Engineer
+      - Senior Full Stack Developer
+      - Junior Full Stack Developer
+      - Fullstack
+      - Fullstack Engineer
+      - Fullstack Developer
+      - Fullstack Software Engineer
+      - Full-Stack Engineer
+      - Full-Stack Developer
+      - Full-Stack Software Engineer
+      - MERN Developer
+      - MERN Engineer
+      - MEAN Stack Developer
+      - React Node Developer
+      - Node React Developer
+      - React.js Node.js Developer
+      - Java React Developer
+      - Spring React Developer
+      - Angular Java Developer
+      - Angular Node Developer
+      - Full Stack Java
+      - Full Stack React
+      - Full Stack Node
+      - Full Stack Python
+      - Full Stack .NET
+      relevance_keywords:
+      - full stack
+      - fullstack
+      - full-stack
+      - MERN
+      - MEAN
+      - React+Node
+      - Java+React
+      - Spring+React
+      - Angular+Java
+      - Angular+Node
+    backend:
+      search_terms:
+      - Backend Engineer
+      - Backend Developer
+      - Back End Engineer
+      - Back End Developer
+      - Backend Software Engineer
+      - Java Backend Engineer
+      - Java Backend Developer
+      - Python Backend Engineer
+      - Python Backend Developer
+      - Golang Backend Engineer
+      - Go Backend Engineer
+      - Node.js Backend Developer
+      - API Developer
+      - Server Side Engineer
+      - Server-side Developer
+      - Microservices Developer
+      - Distributed Systems Engineer
+      relevance_keywords:
+      - backend
+      - back end
+      - API
+      - server-side
+      - microservices
+      - distributed systems

@@ -1,0 +1,40 @@
+ATTACHMENT CONTROL
+
+This JSON controls which PDF files are merged by scripts/workflow/08-attachment.py
+and in what order. Paths are relative to the JobOps repo root.
+
+Supported placeholders:
+- {relative_pdf}: sheet/job.pdf relative path from outputs/ready-format
+- {relative_json}: sheet/job.json or sheet/job.md relative path from outputs/ready-format
+- {sheet}: sheet folder
+- {job}: job slug
+
+{
+  "sequence": [
+    {
+      "id": "cover_letter",
+      "label": "Cover Letter",
+      "source": "outputs/cover-letter/pdf/{relative_pdf}",
+      "required": true
+    },
+    {
+      "id": "cv",
+      "label": "Tailored CV",
+      "source": "outputs/cv/pdf/{relative_pdf}",
+      "required": true
+    },
+    {
+      "id": "onboarding_letter",
+      "label": "Onboarding Letter",
+      "source": "assets/letter/onboarding-letter.pdf",
+      "required": true
+    },
+    {
+      "id": "certifications",
+      "label": "All Certifications",
+      "glob": "assets/certs/*.pdf",
+      "sort": "name",
+      "required": true
+    }
+  ]
+}
