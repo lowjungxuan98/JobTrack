@@ -26,12 +26,14 @@ export default async function JobsPage({
   const heading = activeRole ? activeRole.name.replace(/_/g, " ") : "All Jobs";
 
   return (
-    <main className="p-4 sm:p-8">
-      <div className="flex items-baseline justify-between mb-6">
-        <h1 className="text-xl sm:text-2xl font-semibold capitalize">{heading}</h1>
-        <span className="text-sm text-zinc-500">{jobs.length} total</span>
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="w-full min-w-0">
+        <div className="mb-6 flex items-baseline justify-between">
+          <h1 className="text-xl sm:text-2xl font-semibold capitalize">{heading}</h1>
+          <span className="text-sm text-zinc-500">{jobs.length} total</span>
+        </div>
+        <DataTable columns={columns} data={jobs} />
       </div>
-      <DataTable columns={columns} data={jobs} />
-    </main>
+    </div>
   );
 }

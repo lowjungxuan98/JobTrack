@@ -1,8 +1,12 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { ListChecksIcon, ScrollTextIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  makeFacetedOptions,
+  TableFacetedFilter,
+} from "@/components/table-faceted-filter";
 import {
   Table,
   TableBody,
@@ -22,9 +26,73 @@ interface RunTableProps {
   onExpandedChange: (expanded: { id: string; tab: ExpandTab } | null) => void;
 }
 
+type RunFilters = {
+  started: string[];
+  kind: string[];
+  status: string[];
+  batches: string[];
+  stage: string[];
+  duration: string[];
+  run: string[];
+};
+
+const INITIAL_FILTERS: RunFilters = {
+  started: [],
+  kind: [],
+  status: [],
+  batches: [],
+  stage: [],
+  duration: [],
+  run: [],
+};
+
+function matchesSelected(value: string, selectedValues: string[]) {
+  return selectedValues.length === 0 || selectedValues.includes(value);
+}
+
+function batchProgress(run: RunSummary) {
+  return run.total_batches != null ? `${run.current_batch ?? 0} / ${run.total_batches}` : "—";
+}
+
+function stageLabel(run: RunSummary) {
+  return run.status === "running" ? "in flight" : "";
+}
+
 export function RunTable({ runs, expanded, onExpandedChange }: RunTableProps) {
+  const [filters, setFilters] = useState<RunFilters>(INITIAL_FILTERS);
+  const filterOptions = useMemo(
+    () => ({
+      started: makeFacetedOptions(runs, (run) => timeAgo(run.started_at)),
+      kind: makeFacetedOptions(runs, (run) => run.kind),
+      status: makeFacetedOptions(runs, (run) => run.status),
+      batches: makeFacetedOptions(runs, (run) => batchProgress(run)),
+      stage: makeFacetedOptions(runs, (run) => stageLabel(run)),
+      duration: makeFacetedOptions(runs, (run) => duration(run.started_at, run.finished_at)),
+      run: makeFacetedOptions(runs, (run) => shortId(run.id)),
+    }),
+    [runs],
+  );
+
+  const filteredRuns = useMemo(
+    () =>
+      runs.filter((run) =>
+        matchesSelected(timeAgo(run.started_at), filters.started) &&
+        matchesSelected(run.kind, filters.kind) &&
+        matchesSelected(run.status, filters.status) &&
+        matchesSelected(batchProgress(run), filters.batches) &&
+        matchesSelected(stageLabel(run), filters.stage) &&
+        matchesSelected(duration(run.started_at, run.finished_at), filters.duration) &&
+        matchesSelected(shortId(run.id), filters.run),
+      ),
+    [runs, filters],
+  );
+
+  const updateFilter = (key: keyof RunFilters, value: string[]) => {
+    setFilters((current) => ({ ...current, [key]: value }));
+  };
+
   return (
-    <section className="overflow-hidden rounded-lg border bg-card">
+    <section className="w-full min-w-0 overflow-hidden rounded-lg border bg-card">
       <Table>
         <TableHeader className="bg-muted/60">
           <TableRow>
@@ -37,16 +105,82 @@ export function RunTable({ runs, expanded, onExpandedChange }: RunTableProps) {
             <TableHead>Run</TableHead>
             <TableHead className="text-right">Details</TableHead>
           </TableRow>
+          <TableRow className="bg-background">
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Started"
+                className="min-w-28"
+                options={filterOptions.started}
+                selectedValues={filters.started}
+                onSelectedValuesChange={(values) => updateFilter("started", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Kind"
+                className="min-w-24"
+                options={filterOptions.kind}
+                selectedValues={filters.kind}
+                onSelectedValuesChange={(values) => updateFilter("kind", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Status"
+                className="min-w-28"
+                options={filterOptions.status}
+                selectedValues={filters.status}
+                onSelectedValuesChange={(values) => updateFilter("status", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Batches"
+                className="min-w-28"
+                options={filterOptions.batches}
+                selectedValues={filters.batches}
+                onSelectedValuesChange={(values) => updateFilter("batches", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Stage"
+                className="min-w-28"
+                options={filterOptions.stage}
+                selectedValues={filters.stage}
+                onSelectedValuesChange={(values) => updateFilter("stage", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Duration"
+                className="min-w-28"
+                options={filterOptions.duration}
+                selectedValues={filters.duration}
+                onSelectedValuesChange={(values) => updateFilter("duration", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2">
+              <TableFacetedFilter
+                label="Run"
+                className="min-w-28"
+                options={filterOptions.run}
+                selectedValues={filters.run}
+                onSelectedValuesChange={(values) => updateFilter("run", values)}
+              />
+            </TableHead>
+            <TableHead className="py-2" />
+          </TableRow>
         </TableHeader>
         <TableBody>
-          {runs.length === 0 ? (
+          {filteredRuns.length === 0 ? (
             <TableRow>
               <TableCell colSpan={8} className="py-8 text-center text-muted-foreground">
-                No runs yet.
+                {runs.length ? "No runs match filters." : "No runs yet."}
               </TableCell>
             </TableRow>
           ) : (
-            runs.map((run) => (
+            filteredRuns.map((run) => (
               <RunRow
                 key={run.id}
                 run={run}
@@ -72,8 +206,6 @@ function RunRow({
 }) {
   const isOpen = expanded?.id === run.id;
   const tab = isOpen ? expanded.tab : null;
-  const batchProgress =
-    run.total_batches != null ? `${run.current_batch ?? 0} / ${run.total_batches}` : "—";
 
   const open = (next: ExpandTab) => {
     onExpandedChange(isOpen && tab === next ? null : { id: run.id, tab: next });
@@ -87,9 +219,9 @@ function RunRow({
         <TableCell>
           <StatusBadge status={run.status} />
         </TableCell>
-        <TableCell className="font-mono text-xs">{batchProgress}</TableCell>
+        <TableCell className="font-mono text-xs">{batchProgress(run)}</TableCell>
         <TableCell className="font-mono text-xs text-muted-foreground">
-          {run.status === "running" ? "in flight" : ""}
+          {stageLabel(run)}
         </TableCell>
         <TableCell className="font-mono text-xs">{duration(run.started_at, run.finished_at)}</TableCell>
         <TableCell className="font-mono text-xs">{shortId(run.id)}</TableCell>

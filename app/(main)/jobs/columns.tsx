@@ -2,6 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import type { Job, JobRole } from "@/app/generated/prisma/client";
+import { JOBS_STATUS_LABELS } from "./jobs-status";
 import { JobsStatusCell } from "./jobs-status-cell";
 
 export type JobWithRole = Job & { role: JobRole };
@@ -36,7 +37,7 @@ export const columns: ColumnDef<JobWithRole>[] = [
   {
     id: "category",
     header: "Category",
-    accessorFn: (r) => r.role.name,
+    accessorFn: (r) => r.role.name.replace(/_/g, " "),
     cell: ({ row }) => (
       <span className="capitalize text-zinc-600 dark:text-zinc-400">
         {row.original.role.name.replace(/_/g, " ")}
@@ -44,8 +45,10 @@ export const columns: ColumnDef<JobWithRole>[] = [
     ),
   },
   {
-    accessorKey: "postedDate",
+    id: "postedDate",
     header: "Posted",
+    accessorFn: (r) =>
+      r.postedDate ? r.postedDate.toISOString().slice(0, 10) : "",
     cell: ({ row }) =>
       row.original.postedDate
         ? row.original.postedDate.toISOString().slice(0, 10)
@@ -57,8 +60,9 @@ export const columns: ColumnDef<JobWithRole>[] = [
     cell: ({ row }) => <PipelineStatusPill status={row.original.pipelineStatus} />,
   },
   {
-    accessorKey: "jobsStatus",
+    id: "jobsStatus",
     header: "Status",
+    accessorFn: (r) => JOBS_STATUS_LABELS[r.jobsStatus],
     cell: ({ row }) => (
       <JobsStatusCell id={row.original.id} value={row.original.jobsStatus} />
     ),

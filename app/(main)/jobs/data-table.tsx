@@ -1,19 +1,35 @@
 "use client";
 
 import {
+  Column,
   ColumnDef,
   ColumnFiltersState,
+  FilterFn,
+  Row,
   SortingState,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useEffect, useRef, useState } from "react";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import {
+  FacetedFilterOption,
+  normalizeFacetValue,
+  TableFacetedFilter,
+} from "@/components/table-faceted-filter";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -28,13 +44,47 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-const COMPANY_FILTER_STORAGE_KEY = "jobs.companyFilter";
+const selectedValuesFilter: FilterFn<unknown> = (
+  row: Row<unknown>,
+  columnId: string,
+  filterValue: unknown,
+) => {
+  const selectedValues = Array.isArray(filterValue) ? filterValue : [];
+
+  if (!selectedValues.length) {
+    return true;
+  }
+
+  return selectedValues.includes(normalizeFacetValue(row.getValue(columnId)));
+};
+
+selectedValuesFilter.autoRemove = (value) =>
+  !Array.isArray(value) || value.length === 0;
+
+function getHeaderLabel(header: unknown, fallback: string) {
+  return typeof header === "string" ? header : fallback;
+}
+
+function getFacetedOptions<TData, TValue>(
+  column: Column<TData, TValue>,
+): FacetedFilterOption[] {
+  return Array.from(column.getFacetedUniqueValues().entries())
+    .map(([value, count]) => {
+      const normalized = normalizeFacetValue(value);
+
+      return {
+        value: normalized,
+        label: normalized || "Blank",
+        count,
+      };
+    })
+    .sort((a, b) => a.label.localeCompare(b.label, undefined, { numeric: true }));
+}
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const restoredCompanyFilter = useRef(false);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -43,50 +93,35 @@ export function DataTable<TData, TValue>({
     columns,
     initialState: { pagination: { pageSize: 10 } },
     autoResetPageIndex: false,
+    defaultColumn: { filterFn: selectedValuesFilter as FilterFn<TData> },
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     state: { sorting, columnFilters },
   });
 
-  useEffect(() => {
-    if (restoredCompanyFilter.current) {
-      return;
-    }
-    restoredCompanyFilter.current = true;
-
-    const companyFilter = window.sessionStorage.getItem(COMPANY_FILTER_STORAGE_KEY);
-    if (companyFilter) {
-      table.getColumn("companyName")?.setFilterValue(companyFilter);
-    }
-  }, [table]);
-
-  function updateCompanyFilter(value: string) {
-    table.getColumn("companyName")?.setFilterValue(value);
-
-    if (value) {
-      window.sessionStorage.setItem(COMPANY_FILTER_STORAGE_KEY, value);
-    } else {
-      window.sessionStorage.removeItem(COMPANY_FILTER_STORAGE_KEY);
-    }
-  }
+  const headerGroups = table.getHeaderGroups();
+  const filterHeaders = headerGroups[headerGroups.length - 1]?.headers ?? [];
 
   return (
-    <div className="space-y-3">
-      <Input
-        placeholder="Filter by company..."
-        value={(table.getColumn("companyName")?.getFilterValue() as string) ?? ""}
-        onChange={(e) => updateCompanyFilter(e.target.value)}
-        className="max-w-xs"
-      />
+    <div className="w-full space-y-3">
+      {columnFilters.length ? (
+        <div className="flex justify-end">
+          <Button variant="outline" size="sm" onClick={() => setColumnFilters([])}>
+            Clear filters
+          </Button>
+        </div>
+      ) : null}
 
-      <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+      <div className="w-full overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map((hg) => (
+            {headerGroups.map((hg) => (
               <TableRow key={hg.id} className="bg-zinc-100 dark:bg-zinc-900">
                 {hg.headers.map((header) => (
                   <TableHead
@@ -103,6 +138,24 @@ export function DataTable<TData, TValue>({
                 ))}
               </TableRow>
             ))}
+            <TableRow className="bg-background">
+              {filterHeaders.map((header) => (
+                <TableHead key={`${header.id}-filter`} className="py-2 px-4">
+                  {!header.isPlaceholder && header.column.getCanFilter() ? (
+                    <TableFacetedFilter
+                      label={getHeaderLabel(header.column.columnDef.header, header.id)}
+                      options={getFacetedOptions(header.column)}
+                      selectedValues={
+                        (header.column.getFilterValue() as string[] | undefined) ?? []
+                      }
+                      onSelectedValuesChange={(values) =>
+                        header.column.setFilterValue(values)
+                      }
+                    />
+                  ) : null}
+                </TableHead>
+              ))}
+            </TableRow>
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.length ? (
@@ -129,11 +182,30 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:justify-between">
         <span className="text-zinc-500">
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </span>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 text-zinc-500">
+            <span>Show</span>
+            <Select
+              value={String(table.getState().pagination.pageSize)}
+              onValueChange={(value) => table.setPageSize(Number(value))}
+            >
+              <SelectTrigger size="sm" className="w-20">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {[10, 50, 100].map((pageSize) => (
+                  <SelectItem key={pageSize} value={String(pageSize)}>
+                    {pageSize}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <span>entries</span>
+          </div>
           <Button
             variant="outline"
             size="sm"

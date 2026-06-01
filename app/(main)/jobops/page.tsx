@@ -38,18 +38,19 @@ export default function JobOpsPage() {
   );
 
   return (
-    <main className="p-4 sm:p-8">
-      <div className="mx-auto max-w-6xl">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="w-full min-w-0">
         <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
+          <div className="min-w-0">
             <h1 className="text-2xl font-semibold tracking-tight">JobOps</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               Trigger pipelines and watch progress in real time.
             </p>
           </div>
-          <div className="flex flex-col items-start gap-2 sm:items-end">
-            <div className="flex flex-wrap gap-2">
+          <div className="flex w-full flex-col items-start gap-2 sm:w-auto sm:items-end">
+            <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-end">
               <Button
+                className="w-full sm:w-auto"
                 onClick={() => trigger("run")}
                 disabled={triggering !== null}
               >
@@ -57,6 +58,7 @@ export default function JobOpsPage() {
                 {triggering === "run" ? "Starting..." : "Run full pipeline"}
               </Button>
               <Button
+                className="w-full sm:w-auto"
                 variant="outline"
                 onClick={() => trigger("retry")}
                 disabled={triggering !== null}
@@ -81,6 +83,6 @@ export default function JobOpsPage() {
           Polls every {POLL_MS / 1000}s.
         </footer>
       </div>
-    </main>
+    </div>
   );
 }
